@@ -1,0 +1,34 @@
+PRODUCTION DATABASE MIGRATION & BACKUP STRATEGY CAPSTONE
+===========================================================
+
+1. Create database:
+
+   CREATE DATABASE production_capstone;
+
+2. Open PowerShell / Command Prompt.
+
+3. Go to this project folder.
+
+4. If PostgreSQL 18 is installed at the standard Windows location:
+
+   "C:\Program Files\PostgreSQL\18\bin\psql.exe" -U postgres -d production_capstone -f run_all.sql
+
+5. Verify:
+
+   "C:\Program Files\PostgreSQL\18\bin\psql.exe" -U postgres -d production_capstone -f scripts\verify_project.sql
+
+6. Refresh analytical views:
+
+   "C:\Program Files\PostgreSQL\18\bin\psql.exe" -U postgres -d production_capstone -f scripts\refresh_materialized_views.sql
+
+7. Backup:
+
+   pg_dump -U postgres -d production_capstone -F c -f production_capstone_backup.dump
+
+8. Restore:
+
+   pg_restore -U postgres -d production_capstone --clean --if-exists production_capstone_backup.dump
+
+NOTE:
+If PostgreSQL is installed in another folder, update the command path.
+Do not upload real passwords, credentials or production database dumps to GitHub.

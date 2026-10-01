@@ -1,0 +1,14 @@
+-- Trigger definitions are created by migration 002.
+-- This file is supplied as a readable, standalone reference for the capstone.
+
+-- The trigger function:
+--   audit_row_change()
+--
+-- The triggers:
+--   trg_customers_audit
+--   trg_products_audit
+--   trg_orders_audit
+--   trg_order_items_audit
+--
+-- To recreate them independently, execute migration:
+-- migrations/002_create_audit_system.up.sql
